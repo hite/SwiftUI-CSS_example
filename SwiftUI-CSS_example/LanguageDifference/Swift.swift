@@ -8,28 +8,25 @@
 
 import SwiftUI
 
+let wikiRow_clsName = CSSStyle([
+    .paddingEdges([.top], 5),
+    .flexHeight(min: 40, max: .infinity)
+])
+
 struct Swift: View {
     var body: some View {
         VStack {
             Image("image-swift")
                 .resizable()
-            .scaledToFit()
-                .frame(width:100, height:100)
-                .cornerRadius(10)
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 15, trailing: 0))
+                .scaledToFit()
+                .addClassName(languageLogo_clsName)
   
             Text("Swift")
-                .font(.headline)
-                .foregroundColor(Color(red: 0x33/0xff, green: 0x33/0xff, blue: 0x33/0xff))
-                .padding(.bottom, 10)
+                .addClassName(languageTitle_clsName)
             
      
             Text("Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. for iOS, macOS, watchOS, tvOS, Linux, and z/OS. ")
-                .font(.footnote)
-                .padding(.horizontal, 10)
-                .foregroundColor(NormalDescColor)
-                .lineSpacing(2)
-            .frame(minHeight: 100, maxHeight: .infinity)
+                .addClassName(languageDesc_clsName)
   
             List() {
                 Section(header: Text("Version history")) {
@@ -96,25 +93,21 @@ struct Swift: View {
                         
                     }) {
                         Text("Chris Lattner, Doug Gregor, John McCall, Ted Kremenek, Joe Groff, and Apple Inc.")
-                           .font(Font.system(size: 12))
-                        .foregroundColor(NormalDescColor)
+                           .addClassName(wikiDesc_clsName)
                     }
                     
                     Spacer()
-                }.padding([.top], 5)
-                    .frame(minHeight: 60, maxHeight: .infinity)
+                }.addClassName(wikiRow_clsName)
                 
                 HStack(alignment: .top) {
                     Text("Influenced by:")
                         .font(Font.system(size: 14))
                     
                     Text("Objective-C,[7] Rust, Haskell, Ruby, Python, C#, CLU,[8] D[9]")
-                    .font(Font.system(size: 12))
-                    .foregroundColor(NormalDescColor)
+                    .addClassName(wikiDesc_clsName)
                     
                     Spacer()
-                }.padding([.top], 5)
-                .frame(minHeight: 60, maxHeight: .infinity)
+                }.addClassName(wikiRow_clsName)
             }.padding(EdgeInsets(top: 2, leading: 10, bottom: 10, trailing: 10))
             
         }

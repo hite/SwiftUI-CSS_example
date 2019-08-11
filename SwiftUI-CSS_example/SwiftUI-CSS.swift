@@ -27,6 +27,7 @@ enum CSSProperty {
     case padding(CGFloat)
     case paddingHorizontal(CGFloat)
     case paddingVertical(CGFloat)
+    case paddingEdges(Edge.Set, CGFloat)
     // TLBT = top + leading + bottom + trailing .It differs from css-style definition that is top, right, bottom, left
     case paddingTLBT(CGFloat, CGFloat, CGFloat, CGFloat)
     
@@ -39,8 +40,8 @@ enum CSSProperty {
     case width(CGFloat)
     case height(CGFloat)
     case frame(width: CGFloat?, height: CGFloat?, alignment: Alignment)
-    case idealWidth(_ ideal: CGFloat, minWidth: CGFloat?, maxWidth: CGFloat?)
-    case idealHeight(_ ideal: CGFloat, minHeight: CGFloat?, maxHeight: CGFloat?)
+    case flexWidth(min: CGFloat?, max: CGFloat?)
+    case flexHeight(min: CGFloat?, max: CGFloat?)
 
     case position(x: CGFloat, y: CGFloat)
     case offset(x: CGFloat, y: CGFloat)
@@ -75,11 +76,13 @@ struct CSSStyle {
             case .lineSpacing(let spacing):
                 return self.applyLineSpacing(content: newContent, spacing: spacing)
             case .padding(let padding):
-                return self.applyPaddingByEdge(content: newContent, direction: .all, padding: padding)
+                return self.applyPaddingByEdge(content: newContent, directions: [.all], padding: padding)
             case .paddingHorizontal(let padding):
-                return self.applyPaddingByEdge(content: newContent, direction: .horizontal, padding: padding)
+                return self.applyPaddingByEdge(content: newContent, directions: [.horizontal], padding: padding)
+            case let .paddingEdges(edges, padding):
+                return self.applyPaddingByEdge(content: newContent, directions: edges, padding: padding)
             case .paddingVertical(let padding):
-                return self.applyPaddingByEdge(content: newContent, direction: .vertical, padding: padding)
+                return self.applyPaddingByEdge(content: newContent, directions: [.vertical], padding: padding)
             case let .paddingTLBT(top, leading, bottom, trailing):
                 return self.applyPaddingAll(content: newContent, inset: .init(top: top, leading: leading, bottom: bottom, trailing: trailing))
             case .opacity(let opacity):
@@ -98,10 +101,10 @@ struct CSSStyle {
                 return self.applyHeight(content: newContent, height: height)
             case let .frame(width, height, alignment):
                 return self.applyFrame(content: newContent, width: width, height: height, alignment: alignment)
-            case let .idealWidth(ideal, minWidth, maxWidth):
-                return self.applyIdealWidth(content: newContent, ideal, minWidth: minWidth, maxWidth: maxWidth)
-            case let .idealHeight(ideal, minHeight, maxHeight):
-                return self.applyIdealHeight(content: newContent, ideal, minHeight: minHeight, maxHeight: maxHeight)
+            case let .flexWidth(minWidth, maxWidth):// the disadv
+                return self.applyFlexWidth(content: newContent, minWidth: minWidth, idealWidth: nil, maxWidth: maxWidth)
+            case let .flexHeight(minHeight, maxHeight):
+                return self.applyFlexHeight(content: newContent, minHeight: minHeight, idealHeight: nil, maxHeight: maxHeight)
             case let .position(x, y):
                 return self.applyPosition(content: newContent, x: x, y: y)
             case let .offset(x, y):
@@ -127,8 +130,8 @@ struct CSSStyle {
     func applyLineSpacing(content: AnyView, spacing: CGFloat) -> AnyView {
         return content.lineSpacing(spacing).eraseToAnyView()
     }
-    func applyPaddingByEdge(content: AnyView, direction: Edge.Set, padding: CGFloat) -> AnyView {
-        return content.padding([direction], padding).eraseToAnyView()
+    func applyPaddingByEdge(content: AnyView, directions: Edge.Set, padding: CGFloat) -> AnyView {
+        return content.padding(directions, padding).eraseToAnyView()
     }
     func applyPaddingAll(content: AnyView, inset: EdgeInsets) -> AnyView {
         return content.padding(inset).eraseToAnyView()
@@ -157,11 +160,11 @@ struct CSSStyle {
     func applyFrame(content: AnyView, width: CGFloat?, height: CGFloat?, alignment: Alignment) -> AnyView {
         return content.frame(width: width, height: height, alignment: alignment).eraseToAnyView()
     }
-    func applyIdealWidth(content: AnyView, _ ideal: CGFloat, minWidth: CGFloat?, maxWidth: CGFloat?) -> AnyView {
-        return content.frame(minWidth: minWidth, idealWidth: ideal, maxWidth: maxWidth).eraseToAnyView()
+    func applyFlexWidth(content: AnyView, minWidth: CGFloat?, idealWidth: CGFloat?, maxWidth: CGFloat?) -> AnyView {
+        return content.frame(minWidth: minWidth, idealWidth: idealWidth, maxWidth: maxWidth).eraseToAnyView()
     }
-    func applyIdealHeight(content: AnyView, _ ideal: CGFloat, minHeight: CGFloat?, maxHeight: CGFloat?) -> AnyView {
-        return content.frame(minHeight: minHeight, idealHeight: ideal, maxHeight: maxHeight).eraseToAnyView()
+    func applyFlexHeight(content: AnyView, minHeight: CGFloat?, idealHeight: CGFloat?, maxHeight: CGFloat?) -> AnyView {
+        return content.frame(minHeight: minHeight, idealHeight: idealHeight, maxHeight: maxHeight).eraseToAnyView()
     }
     func applyPosition(content: AnyView, x: CGFloat, y: CGFloat) -> AnyView {
         return content.position(x:x, y: y).eraseToAnyView()
