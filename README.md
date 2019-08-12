@@ -129,7 +129,7 @@ let wikiDesc_clsName = CSSStyle([
 ```
 
 ## the other benefits of using SwiftUI-CSS
-1. more easy to change a lot of styles when state change.
+1. more easy to change a lot of styles when state changes.
 ``` switfui
 // without swiftui-css
 if festival == 'Christmas' {
@@ -138,7 +138,7 @@ if festival == 'Christmas' {
      .foreground(.white)
      .background(.red)
 } else {
-        Text("Welcome everyone!")
+     Text("Welcome everyone!")
      .font(.title)
      .foreground(.darkGray)
      .background(.white)
