@@ -102,7 +102,7 @@ If you change the style of Text("28 October 2014"), you must change the style of
 ```
 ### With SwiftUI-CSS
 You can change the definition of wikiDesc_clsName once for all.
-``` switfui
+``` swift
 let wikiDesc_clsName = CSSStyle([
     .font(Font.system(size: 12)),
     .foregroundColor(NormalDescColor)
@@ -130,7 +130,7 @@ let wikiDesc_clsName = CSSStyle([
 
 ## the other benefits of using SwiftUI-CSS
 1. more easy to change a lot of styles when state changes.
-``` switfui
+``` swift
 // without swiftui-css
 if festival == 'Christmas' {
      Text("Welcome everyone!")
