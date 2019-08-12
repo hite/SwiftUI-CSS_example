@@ -4,7 +4,7 @@ The SwiftUI is a great UI development framework for the iOS app. After I wrote s
 
 So here is **SwiftUI-CSS**. With **SwiftUI-CSS**, you can:
 
-## 1. write View-style-decoupled codes
+## 1. write view-style-decoupled codes
 *View-style-decoupled* makes your source code more clear to read, easy to refactor like html with CSS support.
 
 ### Without SwifUI-CSS:
