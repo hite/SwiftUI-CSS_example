@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,9 @@
 		4829A72322FF1B8100C69BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4829A72222FF1B8100C69BBB /* Assets.xcassets */; };
 		4829A72622FF1B8100C69BBB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4829A72522FF1B8100C69BBB /* Preview Assets.xcassets */; };
 		4829A72922FF1B8100C69BBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4829A72722FF1B8100C69BBB /* LaunchScreen.storyboard */; };
-		4829A73122FF1BF200C69BBB /* SwiftUI-CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4829A73022FF1BF200C69BBB /* SwiftUI-CSS.swift */; };
 		4829A73722FFFF6A00C69BBB /* HTML5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4829A73622FFFF6A00C69BBB /* HTML5.swift */; };
 		4829A7392300559600C69BBB /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4829A7382300559600C69BBB /* Swift.swift */; };
+		486B05AF233249350069CC9D /* SwiftUI_CSS in Frameworks */ = {isa = PBXBuildFile; productRef = 486B05AE233249350069CC9D /* SwiftUI_CSS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,6 @@
 		4829A72522FF1B8100C69BBB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4829A72822FF1B8100C69BBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4829A72A22FF1B8100C69BBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4829A73022FF1BF200C69BBB /* SwiftUI-CSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI-CSS.swift"; sourceTree = "<group>"; };
 		4829A73622FFFF6A00C69BBB /* HTML5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTML5.swift; sourceTree = "<group>"; };
 		4829A7382300559600C69BBB /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				486B05AF233249350069CC9D /* SwiftUI_CSS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,6 @@
 				4829A71C22FF1B7E00C69BBB /* AppDelegate.swift */,
 				4829A71E22FF1B7E00C69BBB /* SceneDelegate.swift */,
 				4829A72022FF1B7E00C69BBB /* ContentView.swift */,
-				4829A73022FF1BF200C69BBB /* SwiftUI-CSS.swift */,
 				4829A73522FFFEF600C69BBB /* LanguageDifference */,
 				4829A72222FF1B8100C69BBB /* Assets.xcassets */,
 				4829A72722FF1B8100C69BBB /* LaunchScreen.storyboard */,
@@ -108,6 +107,9 @@
 			dependencies = (
 			);
 			name = "SwiftUI-CSS_example";
+			packageProductDependencies = (
+				486B05AE233249350069CC9D /* SwiftUI_CSS */,
+			);
 			productName = "SwiftUI-CSS_example";
 			productReference = 4829A71922FF1B7E00C69BBB /* SwiftUI-CSS_example.app */;
 			productType = "com.apple.product-type.application";
@@ -136,6 +138,9 @@
 				Base,
 			);
 			mainGroup = 4829A71022FF1B7E00C69BBB;
+			packageReferences = (
+				486B05AD233249350069CC9D /* XCRemoteSwiftPackageReference "SwiftUI-CSS" */,
+			);
 			productRefGroup = 4829A71A22FF1B7E00C69BBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -165,7 +170,6 @@
 			files = (
 				4829A71D22FF1B7E00C69BBB /* AppDelegate.swift in Sources */,
 				4829A7392300559600C69BBB /* Swift.swift in Sources */,
-				4829A73122FF1BF200C69BBB /* SwiftUI-CSS.swift in Sources */,
 				4829A71F22FF1B7E00C69BBB /* SceneDelegate.swift in Sources */,
 				4829A72122FF1B7E00C69BBB /* ContentView.swift in Sources */,
 				4829A73722FFFF6A00C69BBB /* HTML5.swift in Sources */,
@@ -316,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "me.hite.app.SwiftUI-CSS-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -336,7 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "me.hite.app.SwiftUI-CSS-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -362,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		486B05AD233249350069CC9D /* XCRemoteSwiftPackageReference "SwiftUI-CSS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hite/SwiftUI-CSS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		486B05AE233249350069CC9D /* SwiftUI_CSS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 486B05AD233249350069CC9D /* XCRemoteSwiftPackageReference "SwiftUI-CSS" */;
+			productName = SwiftUI_CSS;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4829A71122FF1B7E00C69BBB /* Project object */;
 }

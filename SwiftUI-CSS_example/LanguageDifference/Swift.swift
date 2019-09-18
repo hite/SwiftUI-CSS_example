@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUI_CSS
 
 let wikiRow_clsName = CSSStyle([
     .paddingEdges([.top], 5),

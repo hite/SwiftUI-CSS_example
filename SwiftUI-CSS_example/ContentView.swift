@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUI_CSS
 
 // color
 let NormalDescColor = Color(red: 0x77/0xff, green: 0x77/0xff, blue: 0x77/0xff)
@@ -32,7 +33,7 @@ let languageDesc_clsName = CSSStyle([
     .paddingHorizontal(10),
     .foregroundColor(NormalDescColor),
     .lineSpacing(2),
-    .flexHeight(min: 50, max: .infinity)
+    .flexHeight(min: 100, max: .infinity)
 ])
 
 let wikiDesc_clsName = CSSStyle([
@@ -51,7 +52,6 @@ struct ContentView: View {
             HTML5()
             
             Swift()
-            Spacer()
         }
     }
 }
