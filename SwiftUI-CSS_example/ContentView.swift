@@ -9,6 +9,10 @@
 import SwiftUI
 import SwiftUI_CSS
 
+// responsive
+
+let responsive = Responsive(UIScreen.main.bounds.size.width / 375)
+
 // color
 let NormalDescColor = Color(red: 0x77/0xff, green: 0x77/0xff, blue: 0x77/0xff)
 let PrimaryLabelColor = Color(red: 0x33/0xff, green: 0x33/0xff, blue: 0x33/0xff)
@@ -16,28 +20,28 @@ let PrimaryLabelColor = Color(red: 0x33/0xff, green: 0x33/0xff, blue: 0x33/0xff)
 let SourceCodeColor = Color.blue
 // the definition of class name variable
 let languageLogo_clsName = CSSStyle([
-    .width(100),
-    .height(100),
-    .cornerRadius(10),
-    .paddingTLBT(10, 0, 15,0)
+    .width(responsive.r(100)),
+    .height(responsive.r(100)),
+    .cornerRadius(responsive.r(10)),
+    .paddingTLBT(responsive.r(10), 0, responsive.r(15),0)
 ])
 
 let languageTitle_clsName = CSSStyle([
     .font(.headline),
     .foregroundColor(Color(red: 0x33/0xff, green: 0x33/0xff, blue: 0x33/0xff)),
-    .paddingEdges([.bottom], 10)
+    .paddingEdges([.bottom], responsive.r(10))
 ])
 
 let languageDesc_clsName = CSSStyle([
     .font(.footnote),
-    .paddingHorizontal(10),
+    .paddingHorizontal(responsive.r(10)),
     .foregroundColor(NormalDescColor),
     .lineSpacing(2),
-    .flexHeight(min: 100, max: .infinity)
+    .flexHeight(min: responsive.r(100), max: .infinity)
 ])
 
 let wikiDesc_clsName = CSSStyle([
-    .font(Font.system(size: 12)),
+    .font(Font.system(size: responsive.r(12))),
     .foregroundColor(NormalDescColor)
 ])
 
@@ -47,7 +51,7 @@ struct ContentView: View {
             Text("The history of languages")
                 .setStyle([
                     .font(.title),
-                    .height(40)
+                    .height(responsive.r(40))
                 ])
             HTML5()
             
@@ -59,7 +63,10 @@ struct ContentView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+        }
     }
 }
 #endif
